@@ -1,9 +1,10 @@
 #include "Employee.hpp"
 #include "WarehouseWorker.hpp"
 #include <Engineer.hpp>
+#include <Game.hpp>
 int main()
 {
-    Engineer eg("Adam", "MEil");
-    eg.displayInfo();
-    eg.getSalary();
+    Game game;
+    game.start();
+    return 0;
 }

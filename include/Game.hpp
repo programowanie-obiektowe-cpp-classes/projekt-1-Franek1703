@@ -9,8 +9,6 @@ class Game
 
 public:
     Game();
-
-    void gameInit();
     void start();
 };
 
