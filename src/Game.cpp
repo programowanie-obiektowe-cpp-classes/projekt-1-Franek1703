@@ -1,20 +1,21 @@
 #include "Game.hpp"
-#include <iostream>
 #include <Engineer.hpp>
-#include <WarehouseWorker.hpp>
-#include <Marketer.hpp>
 #include <Laborer.hpp>
+#include <Marketer.hpp>
+#include <WarehouseWorker.hpp>
+#include <iostream>
 
-Game::Game() : company(10000.0) { // Initial account balance
+Game::Game() : company(10000.0)
+{ // Initial account balance
     // Add one employee of each type to the company
-    company.hire(std::make_unique<Engineer>("Alice", "Mechanical"));
-    company.hire(std::make_unique<WarehouseWorker>("Bob", true));
-    company.hire(std::make_unique<Marketer>("Charlie", 1500));
-    company.hire(std::make_unique<Laborer>("Dave", 42.5));
+    company.hire(std::make_unique< Engineer >("Alice", "Mechanical"));
+    company.hire(std::make_unique< WarehouseWorker >("Bob", true));
+    company.hire(std::make_unique< Marketer >("Charlie", 1500));
+    company.hire(std::make_unique< Laborer >("Dave", 42.5));
 }
 
-
-void Game::start() {
+void Game::start()
+{
     std::cout << "Welcome to the economic simulation game!\n"
               << "Your company starts with:\n"
               << "1 Engineer, 1 Warehouse Worker, 1 Marketer, 1 Laborer.\n"
@@ -30,42 +31,71 @@ void Game::start() {
 
     bool running = true;
 
-    while (running) {
+    while (running)
+    {
         std::cout << "Enter command: ";
         std::string cmd;
         std::cin >> cmd;
 
-        if (cmd == "lp") {
+        if (cmd == "lp")
+        {
             company.listEmployees();
-        } else if (cmd == "zinz") {
+        }
+        else if (cmd == "zinz")
+        {
             std::string name, dept;
             std::cout << "Enter name and department for the Engineer: ";
             std::cin >> name >> dept;
-            company.hire(std::make_unique<Engineer>(name, dept));
+            company.hire(std::make_unique< Engineer >(name, dept));
             std::cout << "Engineer hired successfully!\n";
-        } else if (cmd == "zmag") {
+        }
+        else if (cmd == "zmag")
+        {
             std::string name;
-            bool hasForklift;
+            bool        hasForklift;
             std::cout << "Enter name and forklift ability (1 for yes, 0 for no): ";
             std::cin >> name >> hasForklift;
-            company.hire(std::make_unique<WarehouseWorker>(name, hasForklift));
+            company.hire(std::make_unique< WarehouseWorker >(name, hasForklift));
             std::cout << "Warehouse Worker hired successfully!\n";
-        } else if (cmd == "zmkt") {
+        }
+        else if (cmd == "zmkt")
+        {
             std::string name;
-            int followers;
+            int         followers;
             std::cout << "Enter name and number of followers for the Marketer: ";
             std::cin >> name >> followers;
-            company.hire(std::make_unique<Marketer>(name, followers));
+            company.hire(std::make_unique< Marketer >(name, followers));
             std::cout << "Marketer hired successfully!\n";
-        } else if (cmd == "zrob") {
+        }
+        else if (cmd == "zrob")
+        {
             std::string name;
-            double shoeSize;
+            double      shoeSize;
             std::cout << "Enter name and shoe size for the Laborer: ";
             std::cin >> name >> shoeSize;
-            company.hire(std::make_unique<Laborer>(name, shoeSize));
+            company.hire(std::make_unique< Laborer >(name, shoeSize));
             std::cout << "Laborer hired successfully!\n";
-        } 
-        else {
+        }
+        else if (cmd == "kred")
+        {
+            double amount;
+            int    term;
+            std::cout << "Enter loan amount and duration (in months): ";
+            std::cin >> amount >> term;
+            company.takeLoan(amount, term);
+            std::cout << "Loan of $" << amount << " taken for " << term << " months.\n";
+        }
+        else if (cmd == "kt")
+        {
+            company.endMonth();
+            if (company.getBalance() < 0)
+            {
+                std::cout << "Your company has gone bankrupt. Game over.\n";
+                running = false;
+            }
+        }
+        else
+        {
             std::cout << "Invalid command. Try again.\n";
         }
     }
