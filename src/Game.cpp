@@ -14,13 +14,9 @@ Game::Game() : company(10000.0)
     company.hire(std::make_unique< Laborer >("Dave", 42.5));
 }
 
-void Game::start()
+void printCommands()
 {
-    std::cout << "Welcome to the economic simulation game!\n"
-              << "Your company starts with:\n"
-              << "1 Engineer, 1 Warehouse Worker, 1 Marketer, 1 Laborer.\n"
-              << "You have $10,000 in your account.\n"
-              << "Commands:\n"
+    std::cout << "Commands:\n"
               << "lp - List all employees (names and salaries)\n"
               << "zinz - Hire an Engineer\n"
               << "zmag - Hire a Warehouse Worker\n"
@@ -28,6 +24,15 @@ void Game::start()
               << "zrob - Hire a Laborer\n"
               << "kred - Take a loan (enter amount and duration)\n"
               << "kt - End the turn and show company status\n";
+}
+
+void Game::start()
+{
+    std::cout << "Welcome to the economic simulation game!\n"
+              << "Your company starts with:\n"
+              << "1 Engineer, 1 Warehouse Worker, 1 Marketer, 1 Laborer.\n"
+              << "You have $10,000 in your account.\n";
+    printCommands();
 
     bool running = true;
 
@@ -93,6 +98,9 @@ void Game::start()
                 std::cout << "Your company has gone bankrupt. Game over.\n";
                 running = false;
             }
+        }
+        else if (cmd == "h" || cmd == "help"){
+            printCommands();
         }
         else
         {

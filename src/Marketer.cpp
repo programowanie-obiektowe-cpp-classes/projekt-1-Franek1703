@@ -9,6 +9,3 @@ void Marketer::displayInfo() const {
               << ", Social Media Followers: " << socialMediaFollowers << "\n";
 }
 
-int Marketer::calculateImpact() const {
-    return socialMediaFollowers / 100;
-}

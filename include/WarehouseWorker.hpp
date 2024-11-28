@@ -7,7 +7,7 @@ class WarehouseWorker : public Employee {
 public:
     WarehouseWorker(const std::string& name, bool hasForkliftLicense);
     void displayInfo() const override;
-    int calculateImpact() const override;
+    static constexpr double CMag = 100.0;
 
 private:
     bool forkliftCertified;

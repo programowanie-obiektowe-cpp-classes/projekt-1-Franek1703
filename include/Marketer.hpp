@@ -8,7 +8,7 @@ class Marketer : public Employee {
 public:
     Marketer(const std::string& name, int followers);
     void displayInfo() const override;
-    int calculateImpact() const override;
+    static constexpr double CMkt = 70.0;
 
 private:
     int socialMediaFollowers;

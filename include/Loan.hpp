@@ -2,6 +2,7 @@
 #define LOAN_HPP
 
 class Loan {
+private:
     double amount;
     int remainingInstallments;
     double interestRate;
@@ -13,6 +14,8 @@ public:
     void reduceInstallment();
     bool isPaidOff() const;
     double getRemainingAmount() const;
+
+    int getRemainingInstallments() const;
 };
 
 #endif // LOAN_HPP

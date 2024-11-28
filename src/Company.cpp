@@ -43,10 +43,10 @@ double Company::calculateRevenue() const {
         if (dynamic_cast<const WarehouseWorker*>(e.get())) warehouseWorkers++;
     }
 
-    int theoreticalProduction = laborers * 50; // CR = 50
-    int maxCapacity = warehouseWorkers * 100; // CMag = 100
-    int demand = marketers * 70; // CMkt = 70
-    double productPrice = engineers * 200; // CI = 200
+    int theoreticalProduction = laborers * Laborer::CR;
+    int maxCapacity = warehouseWorkers * WarehouseWorker::CMag;
+    int demand = marketers * Marketer::CMkt;
+    double productPrice = engineers * Engineer::CI;
 
     int actualProduction = std::min(theoreticalProduction, maxCapacity);
     int soldProducts = std::min(demand, actualProduction);
@@ -70,6 +70,19 @@ void Company::endMonth() {
               << "Revenue: $" << revenue << "\n"
               << "Salaries: $" << salaryCost << "\n"
               << "Remaining Balance: $" << accountBalance << "\n";
+    if (!loans.empty()) {
+        std::cout << "Loans:\n";
+        for (size_t i = 0; i < loans.size(); ++i) {
+            std::cout << "  Loan " << i + 1 << ": Remaining Amount: $"
+                      << loans[i].getRemainingAmount()
+                      << ", Monthly Payment: $"
+                      << loans[i].getMonthlyPayment()
+                      << ", Remaining Installments: "
+                      << loans[i].getRemainingInstallments() << "\n";
+        }
+    } else {
+        std::cout << "No active loans.\n";
+    }
 }
 
 double Company::getBalance() const {

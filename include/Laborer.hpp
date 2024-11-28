@@ -8,7 +8,7 @@ class Laborer : public Employee {
 public:
     Laborer(const std::string& name, double shoeSize);
     void displayInfo() const override;
-    int calculateImpact() const override;
+    static constexpr double CR = 50.0;
 
 private:
     double shoeSize;

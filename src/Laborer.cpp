@@ -9,6 +9,3 @@ void Laborer::displayInfo() const {
               << ", Shoe Size: " << shoeSize << "\n";
 }
 
-int Laborer::calculateImpact() const {
-    return static_cast<int>(shoeSize * 2); // Wpływ proporcjonalny do rozmiaru buta
-}

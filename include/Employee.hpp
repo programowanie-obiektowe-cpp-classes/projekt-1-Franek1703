@@ -8,7 +8,6 @@ public:
     Employee(const std::string& name, double salary);
     virtual ~Employee() = default;
     virtual void displayInfo() const = 0;
-    virtual int calculateImpact() const = 0;
     double getSalary() const;
 
 protected:

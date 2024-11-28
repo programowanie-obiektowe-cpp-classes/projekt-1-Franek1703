@@ -20,3 +20,7 @@ bool Loan::isPaidOff() const {
 double Loan::getRemainingAmount() const {
     return remainingInstallments * getMonthlyPayment();
 }
+
+int Loan::getRemainingInstallments() const {
+    return remainingInstallments;
+}

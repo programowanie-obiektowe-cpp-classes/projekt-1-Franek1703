@@ -8,7 +8,7 @@ class Engineer : public Employee {
 public:
     Engineer(const std::string& name, const std::string& faculty);
     void displayInfo() const override;
-    int calculateImpact() const override;
+    static constexpr double CI = 200.0;
 
 
 private:

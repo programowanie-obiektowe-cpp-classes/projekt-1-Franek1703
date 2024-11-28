@@ -7,7 +7,3 @@ void Engineer::displayInfo() const {
     std::cout << "Engineer: " << name << ", Salary: " << salary
               << ", Faculty: " << faculty << "\n";
 }
-
-int Engineer::calculateImpact() const {
-    return 10;
-}
