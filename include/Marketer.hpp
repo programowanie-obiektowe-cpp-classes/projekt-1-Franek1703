@@ -6,10 +6,9 @@
 
 class Marketer : public Employee {
 public:
-    Marketer(const std::string& name, int salary, int followers);
+    Marketer(const std::string& name, int followers);
     void displayInfo() const override;
     int calculateImpact() const override;
-    int getSalary() const override;
 
 private:
     int socialMediaFollowers;

@@ -14,6 +14,8 @@ public:
 
     void hire(std::unique_ptr<Employee> employee);
     void listEmployees() const;
+
+    ~Company() = default;
 };
 
 #endif 

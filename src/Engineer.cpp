@@ -1,11 +1,7 @@
 #include "Engineer.hpp"
 #include <iostream>
 
-Engineer::Engineer(const std::string& name, int salary, const std::string& faculty)
-    : faculty(faculty) {
-    this->name = name;
-    this->salary = salary;
-}
+Engineer::Engineer(const std::string& name, const std::string& faculty) : Employee(name, 5000.0), faculty(faculty) {}
 
 void Engineer::displayInfo() const {
     std::cout << "Engineer: " << name << ", Salary: " << salary
@@ -14,8 +10,4 @@ void Engineer::displayInfo() const {
 
 int Engineer::calculateImpact() const {
     return 10;
-}
-
-int Engineer::getSalary() const {
-    return salary;
 }

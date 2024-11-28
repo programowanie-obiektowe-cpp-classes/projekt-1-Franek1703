@@ -1,11 +1,8 @@
 #include "WarehouseWorker.hpp"
 #include <iostream>
 
-WarehouseWorker::WarehouseWorker(const std::string& name, int salary, bool forklift)
-    : forkliftCertified(forklift) {
-    this->name = name;
-    this->salary = salary;
-}
+WarehouseWorker::WarehouseWorker(const std::string& name, bool hasForkliftLicense)
+    : Employee(name, 4000.0), forkliftCertified(hasForkliftLicense) {}
 
 void WarehouseWorker::displayInfo() const {
     std::cout << "Warehouse Worker: " << name << ", Salary: " << salary
@@ -14,8 +11,4 @@ void WarehouseWorker::displayInfo() const {
 
 int WarehouseWorker::calculateImpact() const {
     return 5;
-}
-
-int WarehouseWorker::getSalary() const {
-    return salary;
 }

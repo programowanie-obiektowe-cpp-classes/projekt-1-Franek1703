@@ -1,11 +1,8 @@
 #include "Marketer.hpp"
 #include <iostream>
 
-Marketer::Marketer(const std::string& name, int salary, int followers)
-    : socialMediaFollowers(followers) {
-    this->name = name;
-    this->salary = salary;
-}
+Marketer::Marketer(const std::string& name, int followers)
+    : Employee(name, 4500.0), socialMediaFollowers(followers) {}
 
 void Marketer::displayInfo() const {
     std::cout << "Marketer: " << name << ", Salary: " << salary
@@ -14,8 +11,4 @@ void Marketer::displayInfo() const {
 
 int Marketer::calculateImpact() const {
     return socialMediaFollowers / 100;
-}
-
-int Marketer::getSalary() const {
-    return salary;
 }

@@ -3,6 +3,7 @@
 #include <Engineer.hpp>
 int main()
 {
-    Engineer eg = Engineer("Adam", 5000, "MEil");
+    Engineer eg("Adam", "MEil");
     eg.displayInfo();
+    eg.getSalary();
 }

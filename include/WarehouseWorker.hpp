@@ -5,10 +5,9 @@
 
 class WarehouseWorker : public Employee {
 public:
-    WarehouseWorker(const std::string& name, int salary, bool forklift);
+    WarehouseWorker(const std::string& name, bool hasForkliftLicense);
     void displayInfo() const override;
     int calculateImpact() const override;
-    int getSalary() const override;
 
 private:
     bool forkliftCertified;
