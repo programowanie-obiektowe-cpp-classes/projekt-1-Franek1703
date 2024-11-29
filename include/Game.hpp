@@ -6,10 +6,16 @@
 class Game
 {
     Company company;
+    bool gameState;
 
 public:
     Game();
-    void start();
+
+    bool isRunning() const;
+
+    void tick();
+
+    void userAction();
 };
 
 #endif

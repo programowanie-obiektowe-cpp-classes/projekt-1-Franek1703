@@ -32,6 +32,7 @@ void Company::payInstallments() {
         }
     }
     accountBalance -= totalInstallments;
+    std::cout << "Total loan installments paid: $" << totalInstallments << "\n";
 }
 
 double Company::calculateRevenue() const {
@@ -55,21 +56,29 @@ double Company::calculateRevenue() const {
    
 }
 
-void Company::endMonth() {
-    double revenue = calculateRevenue();
-    double salaryCost = 0.0;
-
-    for (const auto& e : employees) {
-        salaryCost += e->getSalary();
+void Company::paySalaries() {
+    double totalSalaries = 0.0;
+    for (const auto& employee : employees) {
+        totalSalaries += employee->getSalary();
     }
+    accountBalance -= totalSalaries;
+    std::cout << "Total salaries paid: $" << totalSalaries << "\n";
+}
 
+void Company::receiveIncome() {
+    double revenue = calculateRevenue();
+    accountBalance += revenue;
+    std::cout << "Income received: $" << revenue << "\n";
+}
+
+void Company::endMonth() {
+    std::cout << "Month Summary:\n";
+    receiveIncome();
+    paySalaries();
     payInstallments();
-    accountBalance += revenue - salaryCost;
 
-    std::cout << "Month Summary:\n"
-              << "Revenue: $" << revenue << "\n"
-              << "Salaries: $" << salaryCost << "\n"
-              << "Remaining Balance: $" << accountBalance << "\n";
+
+    std::cout << "Remaining Balance: $" << accountBalance << "\n";
     if (!loans.empty()) {
         std::cout << "Loans:\n";
         for (size_t i = 0; i < loans.size(); ++i) {

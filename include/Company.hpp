@@ -22,6 +22,8 @@ public:
     void payInstallments();
 
     double calculateRevenue() const;
+    void   paySalaries();
+    void   receiveIncome();
     void   endMonth();
     double getBalance() const;
 

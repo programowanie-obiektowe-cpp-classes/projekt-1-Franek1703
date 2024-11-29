@@ -5,6 +5,10 @@
 int main()
 {
     Game game;
-    game.start();
+
+    while (game.isRunning())
+    {
+        game.tick();
+    }
     return 0;
 }
